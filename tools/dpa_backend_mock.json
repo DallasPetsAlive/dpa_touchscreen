@@ -1,0 +1,79 @@
+{
+  "uuid": "c3d7561d-3938-4ef0-afae-87d565b3ff4e",
+  "lastMigration": 22,
+  "name": "Dpa backend mock",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "f606f205-90e6-474c-8862-ffdbf1ac15b4",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "petlist",
+      "responses": [
+        {
+          "uuid": "5da1e8cf-62ed-4229-b523-7c3e87495b48",
+          "body": "{\n  \"pets\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"petId\": {{ faker 'datatype.number' min=1 max=1000 }},\n        \"name\": \"{{ faker 'name.firstName' }}\",\n        \"primaryBreed\": \"{{ faker 'animal.dog' }}\",\n        \"mixedBreed\": {{ boolean }},\n        \"sex\": \"{{ oneOf ( array 'male' 'female' 'unknown' ) }}\",\n        \"species\": \"{{ oneOf ( array 'dog' 'cat' ) }}\"\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

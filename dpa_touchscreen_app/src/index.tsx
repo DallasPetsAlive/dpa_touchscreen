@@ -1,15 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import "./index.css";
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+import { PetList } from "./pages/PetList/PetList";
 import { TouchscreenApp } from "./pages/TouchscreenApp";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <TouchscreenApp />
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<TouchscreenApp />} />
+          <Route path="/petlist" element={<PetList />} />
+        </Routes>
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
