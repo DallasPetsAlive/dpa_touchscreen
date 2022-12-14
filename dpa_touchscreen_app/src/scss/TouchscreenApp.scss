@@ -1,0 +1,68 @@
+$primary-blue: #0063a7;
+$primary-green: #7cc24d;
+
+$secondary-green: #00b085;
+$secondary-blue: #a2d9d0;
+
+$tertiary-dark: #343e48;
+$tertiary-light: #435464;
+
+$mosaic-yellow: #f2bc48;
+
+@font-face {
+  font-family: "Rohn";
+  src: url("./RohnRounded-Black.otf") format("opentype");
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $secondary-blue;
+}
+
+.screensaver {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  gap: 2vh;
+
+  .screensaver-animation {
+    object-fit: contain;
+    background-color: white;
+    img {
+      width: 100%;
+    }
+  }
+
+  .screensaver-cta {
+    font-family: "Rohn";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+
+    .cta-text {
+      font-size: 7vh;
+      color: $primary-blue;
+    }
+
+    .screensaver-cta-button {
+      font-family: "Rohn";
+      color: white;
+      background-color: $mosaic-yellow;
+      border: none;
+      border-radius: 20px;
+      font-size: 5vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+    }
+  }
+}

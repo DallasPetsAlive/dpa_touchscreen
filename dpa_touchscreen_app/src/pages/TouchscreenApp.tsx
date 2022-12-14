@@ -2,10 +2,12 @@ import "../scss/TouchscreenApp.scss";
 
 import { FC } from "react";
 
+import { Screensaver } from "./Screensaver/Screensaver";
+
 export const TouchscreenApp: FC = () => {
   return (
     <div>
-      <header>Hello world.</header>
+      <Screensaver />
     </div>
   );
 };
