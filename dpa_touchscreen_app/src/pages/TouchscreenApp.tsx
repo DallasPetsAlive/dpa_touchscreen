@@ -1,8 +1,7 @@
 import "../scss/TouchscreenApp.scss";
 
+import { Screensaver } from "pages/Screensaver/Screensaver";
 import { FC } from "react";
-
-import { Screensaver } from "./Screensaver/Screensaver";
 
 export const TouchscreenApp: FC = () => {
   return (

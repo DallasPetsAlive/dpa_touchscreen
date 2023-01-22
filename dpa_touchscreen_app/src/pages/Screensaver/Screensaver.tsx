@@ -1,18 +1,21 @@
+import animation from "assets/DPAMOSAIC.png";
 import { FC } from "react";
-
-import animation from "../../assets/DPAMOSAIC.png";
+import { Link } from "react-router-dom";
+import { DPARoutes } from "routes";
 
 export const Screensaver: FC = () => {
   const startButton = (
-    <button type="button" className="screensaver-cta-button">
-      START
-    </button>
+    <Link to={DPARoutes.quiz}>
+      <button type="button" className="screensaver-cta-button">
+        START
+      </button>
+    </Link>
   );
 
   return (
     <div className="screensaver">
       <div className="screensaver-animation">
-        <img src={animation} alt="mosaic animation" />
+        <img src={animation} />
       </div>
       <div className="screensaver-cta">
         <span className="cta-text">FIND YOUR BEST FRIEND</span>

@@ -1,15 +1,14 @@
-import "./index.css";
-
+import { PetList } from "pages/PetList/PetList";
+import { Quiz } from "pages/Quiz/Quiz";
+import { TouchscreenApp } from "pages/TouchscreenApp";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import reportWebVitals from "reportWebVitals";
+import { DPARoutes } from "routes";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-import { PetList } from "./pages/PetList/PetList";
-import { TouchscreenApp } from "./pages/TouchscreenApp";
-import reportWebVitals from "./reportWebVitals";
 
 const queryClient = new QueryClient();
 
@@ -21,8 +20,9 @@ root.render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <Routes>
-          <Route path="/" element={<TouchscreenApp />} />
-          <Route path="/petlist" element={<PetList />} />
+          <Route path={DPARoutes.home} element={<TouchscreenApp />} />
+          <Route path={DPARoutes.quiz} element={<Quiz />} />
+          <Route path={DPARoutes.petList} element={<PetList />} />
         </Routes>
         <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
