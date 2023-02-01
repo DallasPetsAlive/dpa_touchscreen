@@ -30,7 +30,7 @@ export const Screensaver: FC = () => {
   }, []);
 
   let catGifElement = null;
-  if (count < 5) {
+  if (15 < count && count <= 20) {
     catGifElement = <img src={catgif} className="catgif" />;
   }
 
