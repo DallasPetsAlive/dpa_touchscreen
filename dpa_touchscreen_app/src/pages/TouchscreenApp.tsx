@@ -5,7 +5,7 @@ import { FC } from "react";
 
 export const TouchscreenApp: FC = () => {
   return (
-    <div>
+    <div className="app">
       <Screensaver />
     </div>
   );
