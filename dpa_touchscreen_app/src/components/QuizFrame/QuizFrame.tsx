@@ -12,15 +12,28 @@ interface props {
   theme?: "light" | "dark" | "yellow";
   showIntro?: boolean;
   title?: string;
+  introTitle?: string;
+  introText?: string;
 }
 
 export const QuizFrame: FC<props> = (props: props) => {
-  const { children, title, theme = "light", showIntro = true } = props;
+  const {
+    children,
+    title,
+    theme = "light",
+    showIntro = true,
+    introTitle = "FIND YOUR BEST FRIEND",
+    introText = "Puppy kitty ipsum dolor sit good dog throw wet nose paws barky dragging" +
+      " tuxedo running nest cockatiel tongue. Harness slobbery birds pet supplies" +
+      " dragging paws cockatiel bird commands treats scratch left paw food chew" +
+      " stay grooming crate cage park paws.",
+  } = props;
 
   const cuddlyImage = theme === "light" ? blueCuddlyImage : whiteCuddlyImage;
   const dpaImage = theme === "light" ? blueDpaLogo : whiteDpaLogo;
-  const homeButtonClasses =
-    theme === "light" ? ["home-button", "home-button-light"] : "home-button";
+  let homeButtonClasses = ["home-button"];
+  if (theme === "light") homeButtonClasses.push("home-button-light");
+  else if (theme === "yellow") homeButtonClasses.push("home-button-yellow");
 
   const homeButton = (
     <Link to={DPARoutes.home}>
@@ -32,13 +45,8 @@ export const QuizFrame: FC<props> = (props: props) => {
 
   const intro = showIntro ? (
     <div className="intro">
-      <div className="intro-title">FIND YOUR BEST FRIEND</div>
-      <div className="intro-text">
-        Puppy kitty ipsum dolor sit good dog throw wet nose paws barky dragging
-        tuxedo running nest cockatiel tongue. Harness slobbery birds pet
-        supplies dragging paws cockatiel bird commands treats scratch left paw
-        food chew stay grooming crate cage park paws.
-      </div>
+      <div className="intro-title">{introTitle}</div>
+      <div className="intro-text">{introText}</div>
     </div>
   ) : null;
 

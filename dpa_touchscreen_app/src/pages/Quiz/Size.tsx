@@ -10,44 +10,32 @@ interface sizeProps {
 export const Size: FC<sizeProps> = (props: sizeProps) => {
   const { setSize } = props;
 
-  const handleSmallClick = () => {
-    setSize("small");
-  };
-
-  const handleMediumClick = () => {
-    setSize("medium");
-  };
-
-  const handleLargeClick = () => {
-    setSize("large");
-  };
-
-  const handleXLargeClick = () => {
-    setSize("extra-large");
-  };
-
   const buttonProps: Array<ButtonProps> = [
     {
       text: "SMALL",
-      onClick: handleSmallClick,
+      onClick: () => setSize("small"),
     },
     {
       text: "MEDIUM",
-      onClick: handleMediumClick,
+      onClick: () => setSize("medium"),
     },
     {
       text: "LARGE",
-      onClick: handleLargeClick,
+      onClick: () => setSize("large"),
     },
     {
-      text: "EXTRA-LARGE",
-      onClick: handleXLargeClick,
+      text: "X-LARGE",
+      onClick: () => setSize("x-large"),
+    },
+    {
+      text: "ALL",
+      onClick: () => setSize(""),
     },
   ];
 
   return (
     <QuizFrame theme="dark" title="CHOOSE A SIZE">
-      <QuizColumn species="dog" />
+      <QuizColumn species="dog" side="left" />
       <QuizColumn buttonProps={buttonProps} />
     </QuizFrame>
   );

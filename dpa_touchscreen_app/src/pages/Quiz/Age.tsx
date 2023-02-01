@@ -11,22 +11,6 @@ interface ageProps {
 export const Age: FC<ageProps> = (props: ageProps) => {
   const { setAge, species } = props;
 
-  const handleBabyClick = () => {
-    setAge("baby");
-  };
-
-  const handleYoungClick = () => {
-    setAge("young");
-  };
-
-  const handleAdultClick = () => {
-    setAge("adult");
-  };
-
-  const handleSeniorClick = () => {
-    setAge("senior");
-  };
-
   let babyText = "BABY";
   if (species === "dog") babyText = "PUPPY";
   else if (species === "cat") babyText = "KITTEN";
@@ -34,25 +18,29 @@ export const Age: FC<ageProps> = (props: ageProps) => {
   const buttonProps: Array<ButtonProps> = [
     {
       text: babyText,
-      onClick: handleBabyClick,
+      onClick: () => setAge("baby"),
     },
     {
       text: "YOUNG",
-      onClick: handleYoungClick,
+      onClick: () => setAge("young"),
     },
     {
       text: "ADULT",
-      onClick: handleAdultClick,
+      onClick: () => setAge("adult"),
     },
     {
       text: "SENIOR",
-      onClick: handleSeniorClick,
+      onClick: () => setAge("senior"),
+    },
+    {
+      text: "ALL",
+      onClick: () => setAge(""),
     },
   ];
 
   return (
-    <QuizFrame theme="dark" title="CHOOSE AGE">
-      <QuizColumn species={species} />
+    <QuizFrame theme={species === "dog" ? "dark" : "yellow"} title="CHOOSE AGE">
+      <QuizColumn species={species} side="left" />
       <QuizColumn buttonProps={buttonProps} />
     </QuizFrame>
   );

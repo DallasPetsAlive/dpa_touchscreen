@@ -78,7 +78,13 @@ export const Quiz: FC = () => {
     : null;
   const sizePage = showSize ? Size({ setSize: handleSetSize }) : null;
   const resultsPage = showResults
-    ? Results({ species, gender, age, size, data })
+    ? Results({
+        species,
+        gender,
+        age,
+        size,
+        data,
+      })
     : null;
 
   return (

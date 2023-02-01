@@ -24,7 +24,6 @@ root.render(
           <Route path={DPARoutes.quiz} element={<Quiz />} />
           <Route path={DPARoutes.petList} element={<PetList />} />
         </Routes>
-        <ReactQueryDevtools initialIsOpen />
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>

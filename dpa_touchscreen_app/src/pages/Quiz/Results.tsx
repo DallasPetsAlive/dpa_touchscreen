@@ -1,3 +1,5 @@
+import { Carousel } from "3d-react-carousal";
+import { PetCard } from "components/PetCard/PetCard";
 import { QuizFrame } from "components/QuizFrame/QuizFrame";
 import { FC } from "react";
 import { Pet } from "types/types";
@@ -14,7 +16,7 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
   const { species, gender, age, size, data } = props;
 
   if (!data) {
-    <QuizFrame theme="dark">...loading...</QuizFrame>;
+    return <QuizFrame theme="dark">...loading...</QuizFrame>;
   }
 
   const results = data.filter((pet) => {
@@ -30,17 +32,32 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
     if (size === "small" && pet.size?.toLowerCase() !== "small") return false;
     if (size === "medium" && pet.size?.toLowerCase() !== "medium") return false;
     if (size === "large" && pet.size?.toLowerCase() !== "large") return false;
-    if (size === "extra-large" && pet.size?.toLowerCase() !== "extra-large")
+    if (size === "x-large" && pet.size?.toLowerCase() !== "x-large")
       return false;
 
     return true;
   });
 
-  console.log(results);
+  const pets =
+    results.length > 0
+      ? results.map((pet) => {
+          return <PetCard pet={pet} key={pet.id} />;
+        })
+      : [<div>No pets found</div>];
 
   return (
-    <QuizFrame showIntro={false} theme="dark">
-      {species} {gender} {age} {size}
+    <QuizFrame
+      showIntro={true}
+      theme={species === "dog" ? "dark" : "yellow"}
+      introTitle="FRIENDS FUR-EVER"
+      introText="Ready to apply? Start the adoption application."
+    >
+      <Carousel
+        className="carousel"
+        slides={pets}
+        autoplay={false}
+        interval={10000}
+      />
     </QuizFrame>
   );
 };

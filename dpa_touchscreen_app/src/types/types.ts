@@ -5,7 +5,7 @@ export interface Pet {
   color?: string;
   coverPhoto?: string;
   description?: string;
-  id?: string;
+  id: string;
   internalId?: string;
   name?: string;
   photos?: string[];

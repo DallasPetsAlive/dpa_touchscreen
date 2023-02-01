@@ -11,28 +11,28 @@ interface genderProps {
 export const Gender: FC<genderProps> = (props: genderProps) => {
   const { setGender, species } = props;
 
-  const handleMaleClick = () => {
-    setGender("male");
-  };
-
-  const handleFemaleClick = () => {
-    setGender("female");
-  };
-
-  const button1Props: ButtonProps = {
-    text: "FEMALE",
-    onClick: handleFemaleClick,
-  };
-
-  const button2Props: ButtonProps = {
-    text: "MALE",
-    onClick: handleMaleClick,
-  };
+  const buttonProps: Array<ButtonProps> = [
+    {
+      text: "FEMALE",
+      onClick: () => setGender("female"),
+    },
+    {
+      text: "MALE",
+      onClick: () => setGender("male"),
+    },
+    {
+      text: "ALL",
+      onClick: () => setGender(""),
+    },
+  ];
 
   return (
-    <QuizFrame theme="dark" title="CHOOSE A GENDER">
-      <QuizColumn species={species} />
-      <QuizColumn buttonProps={[button1Props, button2Props]} />
+    <QuizFrame
+      theme={species === "dog" ? "dark" : "yellow"}
+      title="CHOOSE A GENDER"
+    >
+      <QuizColumn species={species} buttonProps={[]} side="left" />
+      <QuizColumn species={undefined} buttonProps={buttonProps} />
     </QuizFrame>
   );
 };
