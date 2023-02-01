@@ -60,6 +60,12 @@ body {
   }
 }
 
+.catgif {
+  width: 100vw;
+  position: fixed;
+  bottom: -16vw;
+}
+
 .screensaver {
   display: flex;
   flex-direction: column;

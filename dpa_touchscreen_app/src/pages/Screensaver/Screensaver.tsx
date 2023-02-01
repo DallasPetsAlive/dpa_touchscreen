@@ -1,10 +1,13 @@
+import catgif from "assets/catgif.gif";
 import animation from "assets/DPAMOSAIC.png";
 import classNames from "classnames";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DPARoutes } from "routes";
 
 export const Screensaver: FC = () => {
+  const [count, setCount] = useState<number>(0);
+
   const startButton = (
     <Link to={DPARoutes.quiz}>
       <button
@@ -16,6 +19,21 @@ export const Screensaver: FC = () => {
     </Link>
   );
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => {
+        if (prevCount > 30) return 0;
+        else return prevCount + 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  let catGifElement = null;
+  if (count < 5) {
+    catGifElement = <img src={catgif} className="catgif" />;
+  }
+
   return (
     <div className="screensaver">
       <div className="screensaver-animation">
@@ -26,6 +44,7 @@ export const Screensaver: FC = () => {
         <span className="cta-text">FIND YOUR BEST FRIEND</span>
         <span>{startButton}</span>
       </div>
+      {catGifElement}
     </div>
   );
 };
