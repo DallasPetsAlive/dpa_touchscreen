@@ -43,6 +43,23 @@ body {
   padding-right: 4vw;
 }
 
+@keyframes bannermove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+@keyframes bannermove2 {
+  0% {
+    transform: translate(+100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 .screensaver {
   display: flex;
   flex-direction: column;
@@ -55,9 +72,16 @@ body {
 
   .screensaver-animation {
     object-fit: contain;
-    background-color: white;
+    white-space: nowrap;
+    overflow: hidden;
     img {
       width: 100%;
+      animation: bannermove 20s linear infinite;
+    }
+    .img2 {
+      margin-left: -100%;
+      width: 100%;
+      animation: bannermove2 20s linear infinite;
     }
   }
 
