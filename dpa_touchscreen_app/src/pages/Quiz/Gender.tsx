@@ -30,9 +30,10 @@ export const Gender: FC<genderProps> = (props: genderProps) => {
     <QuizFrame
       theme={species === "dog" ? "dark" : "yellow"}
       title="CHOOSE A GENDER"
+      introText={species}
     >
-      <QuizColumn species={species} buttonProps={[]} side="left" />
-      <QuizColumn species={undefined} buttonProps={buttonProps} />
+      <QuizColumn species={species} buttonProps={[]} side="left" key="left" />
+      <QuizColumn species={undefined} buttonProps={buttonProps} key="right" />
     </QuizFrame>
   );
 };

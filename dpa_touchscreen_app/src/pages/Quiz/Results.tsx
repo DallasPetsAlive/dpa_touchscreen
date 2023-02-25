@@ -50,7 +50,7 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
       showIntro={true}
       theme={species === "dog" ? "dark" : "yellow"}
       introTitle="FRIENDS FUR-EVER"
-      introText="Ready to apply? Start the adoption application."
+      introText="results"
     >
       <Carousel
         className="carousel"

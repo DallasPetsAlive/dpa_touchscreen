@@ -34,9 +34,9 @@ export const Size: FC<sizeProps> = (props: sizeProps) => {
   ];
 
   return (
-    <QuizFrame theme="dark" title="CHOOSE A SIZE">
-      <QuizColumn species="dog" side="left" />
-      <QuizColumn buttonProps={buttonProps} />
+    <QuizFrame theme="dark" title="CHOOSE A SIZE" introText="dog">
+      <QuizColumn species="dog" side="left" key="left" />
+      <QuizColumn buttonProps={buttonProps} key="right" />
     </QuizFrame>
   );
 };

@@ -39,9 +39,9 @@ export const Age: FC<ageProps> = (props: ageProps) => {
   ];
 
   return (
-    <QuizFrame theme={species === "dog" ? "dark" : "yellow"} title="CHOOSE AGE">
-      <QuizColumn species={species} side="left" />
-      <QuizColumn buttonProps={buttonProps} />
+    <QuizFrame theme={species === "dog" ? "dark" : "yellow"} title="CHOOSE AGE" introText={species}>
+      <QuizColumn species={species} side="left" key="left" />
+      <QuizColumn buttonProps={buttonProps} key="right" />
     </QuizFrame>
   );
 };

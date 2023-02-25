@@ -156,6 +156,7 @@ body {
     .intro-text {
       font-size: 1.5vh;
       text-align: center;
+      width: 80%;
     }
   }
   .home-button {
@@ -188,7 +189,7 @@ body {
         max-width: 80%;
       }
       button {
-        width: 50%;
+        width: 65%;
       }
     }
     .dog-button {
@@ -349,4 +350,48 @@ body {
   .slider-single-content {
   transform: translateX(60%) scale(0.8) !important;
   opacity: 0.7 !important;
+}
+
+.idle-modal {
+  position: fixed;
+  z-index: 1300;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idle-modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: white;
+  opacity: 0.8;
+  border-style: solid;
+  border-width: 5px;
+  border-color: $primary-green;
+  text-align: center;
+  border-radius: 2vw;
+
+  h1 {
+    font-family: "Rohn";
+    font-size: 5vh;
+    color: $primary-blue;
+    text-align: center;
+  }
+  button {
+    background-color: $primary-blue;
+    color: white;
+    margin-bottom: 1vh;
+  }
+  p {
+    text-align: center;
+    font-size: 2vh;
+    color: $primary-blue;
+  }
 }

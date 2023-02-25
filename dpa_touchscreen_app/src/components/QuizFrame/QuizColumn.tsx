@@ -19,6 +19,7 @@ export const QuizColumn: FC<props> = (props: props) => {
           type="button"
           className={classNames("button", `button-${(index % 3) + 1}`)}
           onClick={buttonProp.onClick}
+          key={buttonProp.text}
         >
           {buttonProp.text}
         </button>
