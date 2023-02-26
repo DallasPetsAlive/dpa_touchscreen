@@ -1,7 +1,8 @@
 import { Carousel } from "3d-react-carousal";
 import { PetCard } from "components/PetCard/PetCard";
+import { PetProfile } from "components/PetProfile/PetProfile";
 import { QuizFrame } from "components/QuizFrame/QuizFrame";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Pet } from "types/types";
 
 interface resultsProps {
@@ -10,10 +11,11 @@ interface resultsProps {
   age: string | undefined;
   size: string | undefined;
   data: Array<Pet>;
+  handleSelectPet: (pet: Pet) => void;
 }
 
 export const Results: FC<resultsProps> = (props: resultsProps) => {
-  const { species, gender, age, size, data } = props;
+  const { species, gender, age, size, data, handleSelectPet } = props;
 
   if (!data) {
     return <QuizFrame theme="dark">...loading...</QuizFrame>;
@@ -38,26 +40,32 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
     return true;
   });
 
+  const handleShowProfile = (pet: Pet) => {
+    handleSelectPet(pet);
+  };
+
   const pets =
     results.length > 0
       ? results.map((pet) => {
-          return <PetCard pet={pet} key={pet.id} />;
+          return <PetCard pet={pet} key={pet.id} handleShowProfile={handleShowProfile} />;
         })
       : [<div>No pets found</div>];
 
   return (
-    <QuizFrame
-      showIntro={true}
-      theme={species === "dog" ? "dark" : "yellow"}
-      introTitle="FRIENDS FUR-EVER"
-      introText="results"
-    >
-      <Carousel
-        className="carousel"
-        slides={pets}
-        autoplay={false}
-        interval={10000}
-      />
-    </QuizFrame>
+    <>
+      <QuizFrame
+        showIntro={true}
+        theme={species === "dog" ? "dark" : "yellow"}
+        introTitle="FRIENDS FUR-EVER"
+        introText="results"
+      >
+        <Carousel
+          className="carousel"
+          slides={pets}
+          autoplay={false}
+          interval={10000}
+        />
+      </QuizFrame>
+    </>
   );
 };

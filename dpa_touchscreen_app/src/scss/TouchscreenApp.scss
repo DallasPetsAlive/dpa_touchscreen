@@ -64,6 +64,7 @@ body {
   width: 100vw;
   position: fixed;
   bottom: -16vw;
+  pointer-events: none;
 }
 
 .screensaver {
@@ -301,7 +302,7 @@ body {
       "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 10%;
+    margin: 2vh;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -311,11 +312,14 @@ body {
       font-family: "Rohn";
       font-size: 3vh;
       color: $primary-green;
+      margin-bottom: 2vh;
     }
-    .pet-breed {
-      color: $primary-blue;
-      margin-top: 0.5vh;
-    }
+  }
+
+  button {
+    background-color: $primary-green;
+    color: white;
+    font-size: 4vh;
   }
 }
 
@@ -365,6 +369,45 @@ body {
 }
 
 .idle-modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: white;
+  opacity: 0.8;
+  border-style: solid;
+  border-width: 5px;
+  border-color: $primary-green;
+  text-align: center;
+  border-radius: 2vw;
+
+  h1 {
+    font-family: "Rohn";
+    font-size: 5vh;
+    color: $primary-blue;
+    text-align: center;
+  }
+  button {
+    background-color: $primary-blue;
+    color: white;
+    margin-bottom: 1vh;
+  }
+  p {
+    text-align: center;
+    font-size: 2vh;
+    color: $primary-blue;
+  }
+}
+
+.profile-modal {
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-modal-box {
   position: absolute;
   top: 50%;
   left: 50%;

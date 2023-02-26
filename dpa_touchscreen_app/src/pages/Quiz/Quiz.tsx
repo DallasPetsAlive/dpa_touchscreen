@@ -1,6 +1,7 @@
 import axios from "axios";
+import { PetProfile } from "components/PetProfile/PetProfile";
 import { FC, useState } from "react";
-import { speciesType } from "types/types";
+import { Pet, speciesType } from "types/types";
 
 import { useQuery } from "@tanstack/react-query";
 
@@ -21,6 +22,9 @@ export const Quiz: FC = () => {
   const [showAge, setShowAge] = useState<boolean>(false);
   const [showSize, setShowSize] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
+
+  const [showProfile, setShowProfile] = useState(false);
+  const [selectedPet, setSelectedPet] = useState<Pet | undefined>(undefined);
 
   const { data } = useQuery(
     ["petList"],
@@ -64,6 +68,17 @@ export const Quiz: FC = () => {
     setShowResults(true);
   };
 
+  const handleSelectPet = (pet: Pet) => {
+    console.log(pet);
+    setSelectedPet(pet);
+    setShowProfile(true);
+  };
+
+  const handleHidePet = () => {
+    setSelectedPet(undefined);
+    setShowProfile(false);
+  };
+
   const speciesPage = showSpecies
     ? Species({ setSpecies: handleSetSpecies })
     : null;
@@ -84,8 +99,15 @@ export const Quiz: FC = () => {
         age,
         size,
         data,
+        handleSelectPet,
       })
     : null;
+
+  console.log("showResults", showResults);
+
+  const petProfile = (
+    <PetProfile pet={selectedPet} showProfile={showProfile} handleHideProfile={handleHidePet} />
+  );
 
   return (
     <div className="app">
@@ -94,6 +116,7 @@ export const Quiz: FC = () => {
       {agePage}
       {sizePage}
       {resultsPage}
+      {petProfile}
     </div>
   );
 };
