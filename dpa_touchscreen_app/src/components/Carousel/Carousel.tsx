@@ -1,12 +1,14 @@
+import classNames from "classnames";
 import { FC, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
 interface props {
   cards: Array<JSX.Element>;
+  size?: string;
 }
 
 export const Carousel: FC<props> = (props) => {
-  const { cards } = props;
+  const { cards, size = "" } = props;
   const [current, setCurrent] = useState(0);
 
   const isAtEnd = current === cards.length - 1;
@@ -49,13 +51,13 @@ export const Carousel: FC<props> = (props) => {
 
   return (
     <div className="carousel" {...handlers}>
-      <div className="carousel-left">
+      <div className={classNames("carousel-left", `carousel-left-${size}`)}>
         <div className="carousel-left-card" onClick={handleClickLeft}>{leftCard}</div>
       </div>
       <div className="carousel-current">
         <div className="carousel-current-card" draggable>{currentCard}</div>
       </div>
-      <div className="carousel-right">
+      <div className={classNames("carousel-right", `carousel-right-${size}`)}>
         <div className="carousel-right-card" onClick={handleClickRight}>{rightCard}</div>
       </div>
     </div>

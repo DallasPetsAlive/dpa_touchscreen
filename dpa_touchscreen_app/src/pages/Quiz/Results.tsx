@@ -1,8 +1,7 @@
 import { Carousel } from "components/Carousel/Carousel";
 import { PetCard } from "components/PetCard/PetCard";
-import { PetProfile } from "components/PetProfile/PetProfile";
 import { QuizFrame } from "components/QuizFrame/QuizFrame";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Pet } from "types/types";
 
 interface resultsProps {
@@ -44,24 +43,41 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
     handleSelectPet(pet);
   };
 
-  const pets =
-    results.length > 0
-      ? results.map((pet) => {
-          return <PetCard pet={pet} key={pet.id} handleShowProfile={handleShowProfile} />;
-        })
-      : [<div>No pets found</div>];
+  const pets = results.map((pet) => {
+    return <PetCard pet={pet} key={pet.id} handleShowProfile={handleShowProfile} />;
+  });
+
+  const allPets = data.map((pet) => {
+    return <PetCard pet={pet} key={pet.id} handleShowProfile={handleShowProfile} size="small" />;
+  });
+
+  const allPetsRandom = allPets.sort(() => Math.random() - 0.5);
+
+  const noPetsFound = pets.length === 0;
+
+  const noPetsFoundMessage = (
+    <div className="no-pets">
+      <button type="button" className="button" onClick={() => window.location.reload()}>
+        START OVER
+      </button>
+      <p>Here are some other awesome adoptable pets!</p>
+      <Carousel cards={allPetsRandom} size="small" />
+    </div>
+  );
+
+  const content = noPetsFound ? noPetsFoundMessage : <Carousel cards={pets} />;
+  const title = noPetsFound ? "Oh no!" : "FRIENDS FUR-EVER";
+  const introText = noPetsFound ? "none-found" : "results";
 
   return (
     <>
       <QuizFrame
         showIntro={true}
         theme={species === "dog" ? "dark" : "yellow"}
-        introTitle="FRIENDS FUR-EVER"
-        introText="results"
+        introTitle={title}
+        introText={introText}
       >
-        <Carousel
-          cards={pets}
-        />
+        {content}
       </QuizFrame>
     </>
   );

@@ -17,7 +17,7 @@ interface props {
   showIntro?: boolean;
   title?: string;
   introTitle?: string;
-  introText?: "dog" | "cat" | "main" | "results";
+  introText?: "dog" | "cat" | "main" | "results" | "none-found";
 }
 
 export const QuizFrame: FC<props> = (props: props) => {
@@ -50,6 +50,8 @@ export const QuizFrame: FC<props> = (props: props) => {
       + "intuition to make the perfect match!";
   } else if (introText === "results") {
     introFinalText = "Ready to apply? Start the adoption application.";
+  } else if (introText === "none-found") {
+    introFinalText = "We couldn't fetch any pets that match your criteria.";
   }
 
   const cuddlyImage = theme === "light" ? blueCuddlyImage : whiteCuddlyImage;

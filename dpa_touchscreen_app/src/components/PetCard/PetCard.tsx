@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FC } from "react";
 import { Pet } from "types/types";
 
@@ -5,10 +6,11 @@ interface props {
   pet: Pet;
   key: string;
   handleShowProfile: (pet: Pet) => void;
+  size?: string;
 }
 
 export const PetCard: FC<props> = (props) => {
-  const { pet, handleShowProfile } = props;
+  const { pet, handleShowProfile, size = "normal" } = props;
 
   const handleReadMore = () => {
     handleShowProfile(pet);
@@ -20,11 +22,13 @@ export const PetCard: FC<props> = (props) => {
     </button>
   );
 
+  const classes = classNames(size === "small" && "pet-card-small", "pet-card");
+
   return (
-    <div className="pet-card">
+    <div className={classes}>
       <img src={pet.coverPhoto} />
       <div className="pet-card-info">
-        <div className="pet-name">{pet.name}</div>
+        <div className={`pet-name-${size}`}>{pet.name}</div>
         {profileButton}
       </div>
     </div>
