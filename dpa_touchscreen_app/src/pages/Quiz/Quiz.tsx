@@ -69,7 +69,6 @@ export const Quiz: FC = () => {
   };
 
   const handleSelectPet = (pet: Pet) => {
-    console.log(pet);
     setSelectedPet(pet);
     setShowProfile(true);
   };
@@ -102,8 +101,6 @@ export const Quiz: FC = () => {
         handleSelectPet,
       })
     : null;
-
-  console.log("showResults", showResults);
 
   const petProfile = (
     <PetProfile pet={selectedPet} showProfile={showProfile} handleHideProfile={handleHidePet} />

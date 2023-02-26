@@ -20,6 +20,8 @@ $button-3: #52c694;
 
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
 .app {
   height: 100vh;
 }
@@ -323,39 +325,6 @@ body {
   }
 }
 
-.slider-single {
-  width: 34vw !important;
-  margin-left: -17vw !important;
-  margin-top: auto;
-}
-
-.slider-single-content {
-  box-shadow: none !important;
-}
-
-.react-3d-carousel {
-  width: auto;
-  margin-top: 5vh;
-}
-
-.react-3d-carousel
-  .slider-container
-  .slider-content
-  .slider-single.preactive
-  .slider-single-content {
-  transform: translateX(-60%) scale(0.8) !important;
-  opacity: 0.7 !important;
-}
-
-.react-3d-carousel
-  .slider-container
-  .slider-content
-  .slider-single.proactive
-  .slider-single-content {
-  transform: translateX(60%) scale(0.8) !important;
-  opacity: 0.7 !important;
-}
-
 .idle-modal {
   position: fixed;
   z-index: 1300;
@@ -409,17 +378,21 @@ body {
 
 .profile-modal-box {
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  background: white;
-  opacity: 0.8;
+  width: 65vw;
+  background: $secondary-blue;
   border-style: solid;
   border-width: 5px;
-  border-color: $primary-green;
+  border-color: $primary-blue;
   text-align: center;
   border-radius: 2vw;
+  display: flex;
+  height: 70vh;
+  align-items: flex-start;
+  padding-left: 2vw;
+  padding-right: 2vw;
 
   h1 {
     font-family: "Rohn";
@@ -427,14 +400,109 @@ body {
     color: $primary-blue;
     text-align: center;
   }
-  button {
-    background-color: $primary-blue;
-    color: white;
-    margin-bottom: 1vh;
-  }
   p {
-    text-align: center;
+    text-align: left;
     font-size: 2vh;
     color: $primary-blue;
+    padding-right: 2vw;
+    padding-bottom: 2vh;
+    margin-top: 0;
+  }
+  .close-x-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-right: 3vh;
+    margin-top: 1vh;
+
+    .close-x {
+      color: $primary-blue;
+      font-size: 5vh;
+      text-align: center;
+    }
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    max-height: 50vh;
+    justify-content: space-around;
+
+    .description-box {
+      overflow: scroll;
+      height: 40%;
+      background: white;
+
+      border: 1px solid $primary-green;
+      padding: 2vh;
+      border-radius: 2vh;
+    }
+
+    .qr-codes {
+      display: flex;
+
+      .adopt-qr-code {
+        justify-self: left;
+        margin-right: 2vw;
+      }
+
+      span {
+        font-size: 3vh;
+        color: $primary-blue;
+        text-align: center;
+        font-weight: 600;
+
+        .label {
+          margin-left: 1vw;
+        }
+      }
+    }
+  }
+  .photos {
+    display: flex;
+    justify-content: center;
+
+    .photo-gallery {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .image-gallery {
+      width: 100%;
+      height: auto;
+    }
+
+    .image-gallery-slide img {
+      height: 950px;
+      width: 950px;
+      object-fit: cover;
+      border: 3px solid $primary-blue;
+      border-radius: 2vw;
+      overflow: hidden;
+    }
+  }
+}
+
+.carousel {
+  display: flex;
+  margin-top: 3vh;
+  transform-style: preserve-3d;
+
+  .carousel-current {
+    z-index: 1;
+  }
+
+  .carousel-left {
+    width: 15vw;
+    transform: translatex(-40%) scale(.8);
+    opacity: 0.7;
+  }
+  
+  .carousel-right {
+    width: 15vw;
+    transform: translatex(-60%) scale(.8);
+    opacity: 0.7;
   }
 }

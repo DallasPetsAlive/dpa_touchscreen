@@ -14,14 +14,22 @@
     "@types/node": "^16.11.62",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@use-effect/did-update": "0.0.3",
     "axios": "^0.27.2",
+    "buffer": "^6.0.3",
     "classnames": "^2.3.1",
+    "fslightbox-react": "^1.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-html-parser": "^2.0.2",
     "react-idle-timer": "^5.5.2",
+    "react-image-gallery": "^1.2.11",
+    "react-qr-code": "^2.0.11",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "react-swipeable": "^7.0.0",
     "typescript": "^4.8.4",
+    "use-carousel-hook": "^0.2.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,6 +55,9 @@
     ]
   },
   "devDependencies": {
+    "@types/fslightbox-react": "^1.4.2",
+    "@types/react-html-parser": "^2.0.2",
+    "@types/react-image-gallery": "^1.2.0",
     "sass": "^1.55.0"
   }
 }

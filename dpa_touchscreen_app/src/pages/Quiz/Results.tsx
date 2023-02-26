@@ -1,4 +1,4 @@
-import { Carousel } from "3d-react-carousal";
+import { Carousel } from "components/Carousel/Carousel";
 import { PetCard } from "components/PetCard/PetCard";
 import { PetProfile } from "components/PetProfile/PetProfile";
 import { QuizFrame } from "components/QuizFrame/QuizFrame";
@@ -60,10 +60,7 @@ export const Results: FC<resultsProps> = (props: resultsProps) => {
         introText="results"
       >
         <Carousel
-          className="carousel"
-          slides={pets}
-          autoplay={false}
-          interval={10000}
+          cards={pets}
         />
       </QuizFrame>
     </>
