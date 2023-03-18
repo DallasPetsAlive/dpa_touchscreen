@@ -1,6 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .vscode/settings.json
+dpa_touchscreen_app/build
+tools/venv
+infrastructure/.terraform*
 
 # dependencies
 dpa_touchscreen_app/node_modules

@@ -110,6 +110,7 @@ body {
     .screensaver-cta-button {
       color: white;
       background-color: $mosaic-yellow;
+      margin-left: 3vw;
     }
   }
 }
@@ -487,15 +488,20 @@ body {
     .image-gallery {
       width: 100%;
       height: auto;
+      max-height: 100%;
+    }
+
+    .image-gallery-content {
+      width: 90%;
+      height: 90%;
     }
 
     .image-gallery-slide img {
-      height: 950px;
-      width: 950px;
       object-fit: cover;
       border: 3px solid $primary-blue;
       border-radius: 2vw;
       overflow: hidden;
+      aspect-ratio: 1/1;
     }
   }
 }
