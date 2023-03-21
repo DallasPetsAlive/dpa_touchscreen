@@ -1,5 +1,5 @@
 import catgif from "assets/catgif.gif";
-import animation from "assets/DPAMOSAIC.png";
+import animation from "assets/collage_animated.gif";
 import classNames from "classnames";
 import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
