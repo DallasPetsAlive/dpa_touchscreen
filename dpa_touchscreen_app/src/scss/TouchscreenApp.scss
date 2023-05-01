@@ -494,6 +494,11 @@ body {
     .image-gallery-content {
       width: 90%;
       height: 90%;
+
+      &.fullscreen {
+        width: 50%;
+        height: 90%;
+      }
     }
 
     .image-gallery-slide img {
@@ -502,6 +507,7 @@ body {
       border-radius: 2vw;
       overflow: hidden;
       aspect-ratio: 1/1;
+      width: 98%;
     }
   }
 }
@@ -517,22 +523,22 @@ body {
 
   .carousel-left {
     width: 15vw;
-    transform: translatex(-40%) scale(.8);
+    transform: translatex(-40%) scale(0.8);
     opacity: 0.7;
   }
-  
+
   .carousel-right {
     width: 15vw;
-    transform: translatex(-60%) scale(.8);
+    transform: translatex(-60%) scale(0.8);
     opacity: 0.7;
   }
 
   .carousel-left-small {
-    transform: translatex(-.5%) scale(.8);
+    transform: translatex(-0.5%) scale(0.8);
   }
 
   .carousel-right-small {
-    transform: translatex(-30%) scale(.8);
+    transform: translatex(-30%) scale(0.8);
   }
 }
 

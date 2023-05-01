@@ -35,19 +35,22 @@ export const QuizFrame: FC<props> = (props: props) => {
   const [remaining, setRemaining] = useState<number>(0);
   const [showConfimation, setShowConfirmation] = useState<boolean>(false);
 
-  let introFinalText = "We know that choosing the perfect pet can be a big decision, "
-    + "and we're here to help make the process a little easier. Our quiz will "
-    + "ask you a few questions, and then show you pets that match your answers. "
-    + "Whether you're looking for a cuddly cat or a playful pup, we're confident "
-    + "that we can help you find your new best friend. So let's get started and find your perfect match!";
+  let introFinalText =
+    "We know that choosing the perfect pet can be a big decision, " +
+    "and we're here to help make the process a little easier. Our quiz will " +
+    "ask you a few questions, and then show you pets that match your answers. " +
+    "Whether you're looking for a cuddly cat or a playful pup, we're confident " +
+    "that we can help you find your new best friend. So let's get started and find your perfect match!";
   if (introText === "dog") {
-    introFinalText = "Ready to find your pawfect match? Tired of swiping left on dating apps? "
-      + "Swipe right on your new furry friend with our dog adoption matchmaking. "
-      + "Unleash the love: find your match and gain a loyal companion!";
+    introFinalText =
+      "Ready to find your pawfect match? Tired of swiping left on dating apps? " +
+      "Swipe right on your new furry friend with our dog adoption matchmaking. " +
+      "Unleash the love: find your match and gain a loyal companion!";
   } else if (introText === "cat") {
-    introFinalText = "Let us help you find the purrfect match with our cat adoption matchmaking! "
-      + "Don't let finding the right cat be a cat-astrophe. Our adoption program uses science and "
-      + "intuition to make the perfect match!";
+    introFinalText =
+      "Let us help you find the purrfect match with our cat adoption matchmaking! " +
+      "Don't let finding the right cat be a cat-astrophe. Our adoption program uses science and " +
+      "intuition to make the perfect match!";
   } else if (introText === "results") {
     introFinalText = "Ready to apply? Start the adoption application.";
   } else if (introText === "none-found") {

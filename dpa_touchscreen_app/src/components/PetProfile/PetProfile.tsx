@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import ImageGallery from "react-image-gallery";
 import QRCode from "react-qr-code";
@@ -17,19 +17,35 @@ interface props {
 
 export const PetProfile: FC<props> = (props) => {
   const { pet, showProfile, handleHideProfile } = props;
+  const photosListRef = useRef<ImageGallery>(null);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
   if (!pet) return null;
 
   const breed =
     pet.species === "dog" ? <div className="pet-breed">{pet.breed}</div> : null;
 
-  let description = pet.description ? pet.description.replace(new RegExp("\r?\n", "g"), "<br />") : "";
+  let description = pet.description
+    ? pet.description.replace(new RegExp("\r?\n", "g"), "<br />")
+    : "";
 
-  const photos = pet.photos ? pet.photos.map((photo) => photo.replace("%20", "_")) : [];
+  const photos = pet.photos
+    ? pet.photos.map((photo) => photo.replace("%20", "_"))
+    : [];
 
-  const photosFinal = photos.map((photo) => ({ 
+  const photosFinal = photos.map((photo) => ({
     original: photo + "?width=1000&height=1000&scale.option=fill",
   }));
+
+  const onImageClick = () => {
+    if (!isFullscreen && photosList) {
+      photosListRef?.current?.fullScreen();
+      setIsFullscreen(true);
+    } else {
+      photosListRef.current?.exitFullScreen();
+      setIsFullscreen(false);
+    }
+  };
 
   const photosList = pet.photos ? (
     <ImageGallery
@@ -42,6 +58,8 @@ export const PetProfile: FC<props> = (props) => {
       autoPlay
       additionalClass="photo-gallery"
       slideInterval={7000}
+      onClick={onImageClick}
+      ref={photosListRef}
     />
   ) : null;
 
@@ -56,10 +74,16 @@ export const PetProfile: FC<props> = (props) => {
       <Box className="profile-modal-box">
         <Grid container spacing={2}>
           {/* row 1 */}
-          <Grid item xs={2}/>
-          <Grid item xs={8}><h1>{pet.name}</h1></Grid>
+          <Grid item xs={2} />
+          <Grid item xs={8}>
+            <h1>{pet.name}</h1>
+          </Grid>
           <Grid item xs={2} className="close-x-grid">
-            <Button variant="text" onClick={handleHideProfile} className="close-x">
+            <Button
+              variant="text"
+              onClick={handleHideProfile}
+              className="close-x"
+            >
               X
             </Button>
           </Grid>
@@ -71,9 +95,12 @@ export const PetProfile: FC<props> = (props) => {
             <Box className="description-box">
               <p>{ReactHtmlParser(description)}</p>
             </Box>
-            <div className="qr-codes">{adoptQrCode}<span>&#8592;<span className="label">
-              Scan me for Adoption App
-            </span></span></div>
+            <div className="qr-codes">
+              {adoptQrCode}
+              <span>
+                &#8592;<span className="label">Scan me for Adoption App</span>
+              </span>
+            </div>
           </Grid>
         </Grid>
       </Box>
